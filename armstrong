@@ -1,0 +1,27 @@
+num = int(input("Enter a number: "))
+
+def is_armstrong(n):
+    s = str(n)
+    power = len(s)
+    return n == sum(int(digit)**power for digit in s)
+
+if is_armstrong(num):
+    print(f"{num} is an Armstrong number.")
+else:
+    print(f"{num} is not an Armstrong number.")
+    
+    lower = num - 1
+    upper = num + 1
+    closest = None
+    
+    while True:
+        if lower >= 0 and is_armstrong(lower):
+            closest = lower
+            break
+        if is_armstrong(upper):
+            closest = upper
+            break
+        lower -= 1
+        upper += 1
+    
+    print(f"The closest Armstrong number is {closest}")
